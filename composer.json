@@ -1,0 +1,17 @@
+{
+  "name": "soben/wpxml-splitter",
+  "description": "WPXML Splitter",
+  "type": "project",
+  "authors": [
+      {
+          "name": "Chris Lagasse",
+          "email": "soben@outlook.com"
+      }
+  ],
+  "autoload" : {
+      "psr-4" : {
+          "Magpie\\WPXML\\" : "src/"
+      }
+  },
+  "require": {}
+}
