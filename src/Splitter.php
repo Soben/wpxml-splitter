@@ -83,9 +83,16 @@ class Splitter
   {
     $xml = new \DOMDocument();
     $xml->loadXML(file_get_contents($this->settings["baseXML"]));
-    $channelNode = $xml->getElementsByTagName("channel")[0];
+    $channelNode = $xml->getElementsByTagName("channel")->item(0);
 
-    // @todo, set the link, base_site_url, and base_blog_url to be the same as original file.
+    $channelNode->getElementsByTagName("title")->item(0)->nodeValue = $this->xmlIn->getElementsByTagName("title")->item(0)->nodeValue;
+    $channelNode->getElementsByTagName("pubDate")->item(0)->nodeValue = $this->xmlIn->getElementsByTagName("pubDate")->item(0)->nodeValue;
+    $channelNode->getElementsByTagName("language")->item(0)->nodeValue = $this->xmlIn->getElementsByTagName("language")->item(0)->nodeValue;
+    $channelNode->getElementsByTagName("generator")->item(0)->nodeValue = $this->xmlIn->getElementsByTagName("generator")->item(0)->nodeValue;
+  
+    $channelNode->getElementsByTagName("base_site_url")->item(0)->nodeValue = $this->xmlIn->getElementsByTagName("base_site_url")->item(0)->nodeValue;
+    $channelNode->getElementsByTagName("base_blog_url")->item(0)->nodeValue = $this->xmlIn->getElementsByTagName("base_blog_url")->item(0)->nodeValue;
+    $channelNode->getElementsByTagName("link")->item(0)->nodeValue = $this->xmlIn->getElementsByTagName("link")->item(0)->nodeValue;
   
     foreach ($batch as $item) {
       $migratedNode = $xml->importNode($item, true); // I wish this went faster.
