@@ -4,9 +4,21 @@ Have large WPXML Files? This will help you split it up to run batch imports
 
 ## Instructions
 
+```
+require_once("vendor/autoload.php");
+
+$input = "./path/to/xml/file.xml";
+$output = "./path/to/output/direcotyr";
+
+$processor = new \Magpie\WPXML\Splitter($input, $output);
+$processor->process();
+```
+
+## Examples
+
 See `example/split-into-twenty.php` for a working example
 
-You can run this by browser, or going to the command line and running
+You can run this by browser in a local server environment, or going to the command line and running
 
 ```
 $ php split-into-twenty.php
